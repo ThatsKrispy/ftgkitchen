@@ -3,753 +3,803 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="FTG Kitchen — South Florida's shared commercial kitchen, ghost kitchen incubator, food truck commissary, bulk catering, and house-made sauces.">
-<meta name="keywords" content="shared kitchen South Florida, ghost kitchen Miami, food truck commissary, prep kitchen rental, commercial kitchen, food business incubator, bulk catering, house made sauces">
-<meta property="og:title" content="FTG Kitchen — Where Food Businesses Grow">
-<meta property="og:description" content="Commercial kitchen space, ghost kitchen setup, food truck incubator, bulk catering, and house-made sauces in South Florida.">
-<meta property="og:image" content="assets/img/hero-bg.jpg">
+<meta name="description" content="FTG Kitchen — Ghost kitchen and catering services in South Florida. Chef-crafted meals, bulk catering programs, and virtual brand kitchen space in Miami, Broward, and Palm Beach.">
+<meta property="og:title" content="FTG Kitchen — Ghost Kitchen & Catering">
+<meta property="og:description" content="Launch your virtual food brand or book our catering team for South Florida events, cafés, gyms, and corporate accounts.">
+<meta property="og:image" content="assets/img/hero.jpg">
 <meta property="og:type" content="website">
-<title>FTG Kitchen — Where Food Businesses Grow</title>
+<title>FTG Kitchen — Ghost Kitchen & Catering · South Florida</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --char: #141410;
-    --char2: #1E1E18;
-    --cream: #F5F0E8;
-    --cream2: #EDE7D9;
-    --herb: #3D6B35;
-    --herb-light: #C8D9B8;
-    --fire: #E8531A;
-    --fire-dim: #B03F12;
-    --stone: #6B6657;
-    --stone-light: #9C9485;
-    --sans: 'Inter', sans-serif;
-    --serif: 'Playfair Display', serif;
-    --r: 4px;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* FTG brand — pulled from logo */
+  --navy:    #0f1e28;   /* dark logo bg */
+  --navy2:   #162433;   /* mid navy */
+  --navy3:   #1e3040;   /* lighter navy for cards */
+  --sky:     #30b1f0;   /* logo bright blue accent */
+  --sky-dim: #1e8abf;
+  --lime:    #b0d050;   /* logo yellow-green */
+  --lime-dim:#7a9635;
+  --white:   #ffffff;
+  --off:     #f0f5f8;   /* very light blue-white */
+  --mist:    #c8dce8;   /* muted blue-grey text */
+  --fog:     #6e8ea0;   /* secondary text */
+
+  --sans: 'Inter', sans-serif;
+  --serif: 'Playfair Display', serif;
+  --r: 6px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--navy); color: var(--white); overflow-x: hidden; line-height: 1.6; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 68px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.5rem;
+  background: rgba(15,30,40,0.88); backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(48,177,240,0.12);
+  transition: background 0.3s, border-color 0.3s;
+}
+nav.scrolled { background: rgba(15,30,40,0.97); border-color: rgba(48,177,240,0.18); }
+
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+.nav-logo img { height: 38px; width: auto; }
+
+.nav-links { list-style: none; display: flex; align-items: center; gap: 2.25rem; }
+.nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mist); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--sky) !important; color: var(--navy) !important;
+  padding: 0.5rem 1.35rem; border-radius: var(--r);
+  font-size: 0.78rem !important; font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--sky-dim) !important; color: #fff !important; }
+
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+  padding: 0 2.5rem 5rem;
+}
+.hero-photo {
+  position: absolute; inset: 0;
+  background: url('assets/img/hero.jpg') center 40% / cover no-repeat;
+}
+.hero-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(15,30,40,0.6) 0%, rgba(15,30,40,0.25) 45%, rgba(15,30,40,0.85) 80%, rgba(15,30,40,1) 100%),
+    linear-gradient(to right, rgba(15,30,40,0.5) 0%, transparent 60%);
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(48,177,240,0.12); border: 1px solid rgba(48,177,240,0.3);
+  border-radius: 100px; padding: 0.35rem 1rem 0.35rem 0.75rem;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--sky); margin-bottom: 1.75rem;
+}
+.hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sky); }
+
+.hero h1 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  line-height: 0.93; letter-spacing: -0.025em;
+  margin-bottom: 1.75rem;
+}
+.hero h1 em { font-style: italic; color: var(--lime); }
+
+.hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--mist);
+  font-weight: 300; line-height: 1.75; max-width: 520px; margin-bottom: 2.5rem;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+.hero-stats {
+  position: absolute; bottom: 5rem; right: 3rem; z-index: 2;
+  display: flex; gap: 2.5rem;
+}
+.hstat { text-align: center; }
+.hstat-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1; }
+.hstat-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fog); margin-top: 0.25rem; }
+.hstat-line { width: 1px; background: rgba(255,255,255,0.12); align-self: stretch; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block; background: var(--sky); color: var(--navy);
+  font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  padding: 0.9rem 2.1rem; border-radius: var(--r); border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--sky-dim); color: #fff; transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block; background: transparent; color: var(--white);
+  font-family: var(--sans); font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  padding: 0.9rem 2.1rem; border-radius: var(--r);
+  border: 1px solid rgba(255,255,255,0.22);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
+
+.btn-lime {
+  display: inline-block; background: var(--lime); color: var(--navy);
+  font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  padding: 0.9rem 2.1rem; border-radius: var(--r); border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-lime:hover { background: var(--lime-dim); color: #fff; transform: translateY(-1px); }
+
+/* ── SHARED ── */
+.section-inner { max-width: 1240px; margin: 0 auto; padding: 0 2.5rem; }
+
+.eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sky); margin-bottom: 1rem;
+}
+.eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--sky); flex-shrink: 0; }
+
+.section-h2 {
+  font-family: var(--serif); font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.02em; color: var(--white);
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+}
+
+/* ── DIVIDER STRIP ── */
+.divider {
+  background: var(--navy2);
+  border-top: 1px solid rgba(48,177,240,0.1);
+  border-bottom: 1px solid rgba(48,177,240,0.1);
+  padding: 1.5rem 0; overflow: hidden;
+}
+.divider-track {
+  display: flex; gap: 3rem; white-space: nowrap;
+  animation: scroll 30s linear infinite; width: max-content;
+}
+@keyframes scroll { from{transform:translateX(0)}to{transform:translateX(-50%)} }
+.divider-item {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--fog);
+}
+.divider-item .d { width: 3px; height: 3px; border-radius: 50%; background: var(--sky); }
+
+/* ── GHOST KITCHEN ── */
+#ghost { padding: 7rem 0; background: var(--navy); }
+
+.ghost-intro {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4.5rem;
+}
+.ghost-intro-text {}
+.ghost-intro-text .section-h2 { margin-bottom: 1.25rem; }
+.ghost-intro-text p { font-size: 1rem; color: var(--mist); font-weight: 300; line-height: 1.8; }
+.ghost-intro-right { display: flex; flex-direction: column; gap: 1.5rem; }
+.ghost-feature {
+  display: flex; gap: 1.1rem; align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background: rgba(30,48,64,0.5);
+  border: 1px solid rgba(48,177,240,0.1);
+  border-radius: var(--r);
+}
+.ghost-feature-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; padding-top: 0.1rem; }
+.ghost-feature h3 { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+.ghost-feature p { font-size: 0.82rem; color: var(--fog); line-height: 1.6; font-weight: 300; }
+
+.ghost-photos { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.ghost-photo { overflow: hidden; aspect-ratio: 4/3; position: relative; }
+.ghost-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+.ghost-photo:hover img { transform: scale(1.05); }
+.ghost-photo-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.25rem 1rem 0.85rem;
+  background: linear-gradient(to top, rgba(15,30,40,0.9) 0%, transparent 100%);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mist);
+}
+.ghost-cta { margin-top: 2.5rem; display: flex; align-items: center; gap: 1.5rem; }
+.ghost-cta-note { font-size: 0.82rem; color: var(--fog); font-weight: 300; }
+
+/* ── HOW IT WORKS ── */
+#how {
+  background: var(--navy2);
+  border-top: 1px solid rgba(48,177,240,0.1);
+  border-bottom: 1px solid rgba(48,177,240,0.1);
+  padding: 6rem 0;
+}
+.how-head { text-align: center; max-width: 560px; margin: 0 auto 4rem; }
+.how-head .eyebrow { justify-content: center; }
+.how-head .eyebrow::before { display: none; }
+.how-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(48,177,240,0.08); }
+.how-step {
+  background: var(--navy2); padding: 2.25rem 1.75rem;
+  position: relative;
+}
+.how-step::after {
+  content: '';
+  position: absolute; top: 2.25rem; right: -1px;
+  width: 1px; height: 2rem;
+  background: var(--sky); opacity: 0.3;
+}
+.how-step:last-child::after { display: none; }
+.step-n {
+  font-family: var(--serif); font-size: 2.5rem; font-weight: 900;
+  color: rgba(48,177,240,0.12); line-height: 1; margin-bottom: 1rem;
+}
+.how-step h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; }
+.how-step p { font-size: 0.83rem; color: var(--fog); line-height: 1.7; font-weight: 300; }
+
+/* ── CATERING ── */
+#catering { padding: 7rem 0; background: var(--navy); }
+
+.catering-hero {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 0; margin-bottom: 5rem;
+  border: 1px solid rgba(48,177,240,0.1); overflow: hidden; border-radius: var(--r);
+}
+.catering-hero-img { overflow: hidden; min-height: 480px; }
+.catering-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.catering-hero-text {
+  padding: 3.5rem 3rem; background: var(--navy3);
+  display: flex; flex-direction: column; justify-content: center; gap: 0;
+}
+.catering-hero-text .section-h2 { margin-bottom: 1.25rem; }
+.catering-hero-text p { font-size: 0.95rem; color: var(--mist); font-weight: 300; line-height: 1.8; }
+
+.catering-segments { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-top: 2rem; }
+.segment {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(48,177,240,0.1); border-radius: var(--r);
+  transition: border-color 0.2s, background 0.2s;
+}
+.segment:hover { border-color: rgba(48,177,240,0.25); background: rgba(48,177,240,0.04); }
+.segment-icon { font-size: 1.2rem; flex-shrink: 0; }
+.segment h4 { font-family: var(--serif); font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 0.15rem; }
+.segment p { font-size: 0.77rem; color: var(--fog); line-height: 1.55; font-weight: 300; }
+
+.catering-cta-row { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Dish strip */
+.dish-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; }
+.dish-cell { overflow: hidden; aspect-ratio: 1; position: relative; }
+.dish-cell img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s; }
+.dish-cell:hover img { transform: scale(1.06); }
+.dish-cell-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(15,30,40,0.75) 0%, transparent 55%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.dish-cell:hover .dish-cell-overlay { opacity: 1; }
+
+/* ── SAUCES CALLOUT ── */
+#sauces {
+  background: var(--navy2);
+  border-top: 1px solid rgba(48,177,240,0.1);
+  padding: 6rem 0;
+}
+.sauces-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.sauces-photo { overflow: hidden; border-radius: var(--r); border: 1px solid rgba(48,177,240,0.1); }
+.sauces-photo img { width: 100%; display: block; object-fit: cover; }
+.sauces-text .section-h2 { margin-bottom: 1.25rem; }
+.sauces-text p { font-size: 0.95rem; color: var(--mist); font-weight: 300; line-height: 1.8; margin-bottom: 1rem; }
+.sauce-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0; }
+.sauce-tag {
+  font-size: 0.75rem; font-weight: 500; padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(176,208,80,0.3); border-radius: 100px;
+  color: var(--lime); letter-spacing: 0.04em;
+}
+
+/* ── PARTNERS ── */
+#partners {
+  background: var(--navy); padding: 5rem 0;
+  border-top: 1px solid rgba(48,177,240,0.08);
+}
+.partners-head { text-align: center; margin-bottom: 3rem; }
+.partners-head p { font-size: 0.85rem; color: var(--fog); font-weight: 300; margin-top: 0.5rem; }
+.partner-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+.partner-pill {
+  font-size: 0.8rem; font-weight: 500; color: var(--mist);
+  border: 1px solid rgba(200,220,232,0.14); border-radius: 100px;
+  padding: 0.5rem 1.25rem; letter-spacing: 0.03em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.partner-pill:hover { border-color: rgba(48,177,240,0.35); color: var(--sky); }
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--navy2); padding: 7rem 0;
+  border-top: 1px solid rgba(48,177,240,0.1);
+}
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+.contact-left .section-h2 { margin-bottom: 1.25rem; }
+.contact-left > p { font-size: 1rem; color: var(--mist); font-weight: 300; line-height: 1.8; margin-bottom: 2.5rem; }
+
+.contact-card {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1.1rem 1.25rem;
+  background: rgba(15,30,40,0.5); border: 1px solid rgba(48,177,240,0.1);
+  border-radius: var(--r); margin-bottom: 0.75rem;
+}
+.contact-card-icon { font-size: 1.1rem; color: var(--sky); flex-shrink: 0; }
+.contact-card-body strong { display: block; color: var(--white); font-weight: 500; font-size: 0.88rem; margin-bottom: 0.15rem; }
+.contact-card-body span { font-size: 0.82rem; color: var(--fog); font-weight: 300; }
+.contact-card-body a { color: var(--fog); text-decoration: none; transition: color 0.2s; }
+.contact-card-body a:hover { color: var(--sky); }
+
+.form { display: flex; flex-direction: column; gap: 0.9rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.38rem; }
+.form-group label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fog); }
+.form-group input, .form-group select, .form-group textarea {
+  font-family: var(--sans); font-size: 0.9rem; font-weight: 300;
+  color: var(--white); background: rgba(15,30,40,0.7);
+  border: 1px solid rgba(48,177,240,0.15); border-radius: var(--r);
+  padding: 0.75rem 1rem; outline: none; width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--sky); background: rgba(15,30,40,0.9);
+}
+.form-group select option { background: #162433; }
+.form-group textarea { resize: vertical; min-height: 110px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy); padding: 3.5rem 0 2rem;
+  border-top: 1px solid rgba(48,177,240,0.1);
+}
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-brand .footer-logo { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem; }
+.footer-brand .footer-logo img { height: 36px; }
+.footer-brand p { font-size: 0.83rem; color: var(--fog); font-weight: 300; line-height: 1.7; max-width: 240px; margin-bottom: 1.25rem; }
+.footer-social { display: flex; gap: 0.65rem; }
+.footer-social a {
+  width: 34px; height: 34px; border-radius: var(--r);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--fog); text-decoration: none; transition: border-color 0.2s, color 0.2s;
+}
+.footer-social a:hover { border-color: var(--sky); color: var(--sky); }
+.footer-col h4 { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fog); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a { font-size: 0.83rem; color: var(--fog); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { padding-top: 1.75rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-size: 0.73rem; color: var(--fog); font-weight: 300; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-stats { display: none; }
+  .ghost-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+  .catering-hero { grid-template-columns: 1fr; }
+  .catering-hero-img { min-height: 320px; }
+}
+@media (max-width: 768px) {
+  .how-steps { grid-template-columns: 1fr 1fr; }
+  .sauces-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .ghost-photos { grid-template-columns: 1fr 1fr; }
+  .ghost-photos .ghost-photo:last-child { display: none; }
+  .dish-strip { grid-template-columns: 1fr 1fr; }
+  .catering-segments { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 68px; left: 0; right: 0;
+    background: rgba(15,30,40,0.98); padding: 1.5rem;
+    gap: 1.25rem; z-index: 99;
+    border-bottom: 1px solid rgba(48,177,240,0.15);
   }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--char); color: var(--cream); line-height: 1.6; overflow-x: hidden; }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 64px;
-    background: rgba(20,20,16,0.92); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    transition: border-color 0.3s;
-  }
-  .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-  .nav-logo img { height: 36px; width: auto; }
-  .nav-logo-text { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--cream); letter-spacing: 0.04em; }
-  .nav-logo-text span { color: var(--fire); }
-  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone-light); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--cream); }
-  .nav-cta { background: var(--fire) !important; color: #fff !important; padding: 0.5rem 1.25rem; border-radius: var(--r); font-size: 0.78rem !important; font-weight: 600 !important; transition: background 0.2s !important; }
-  .nav-cta:hover { background: var(--fire-dim) !important; }
-  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--cream); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 2rem 5rem; position: relative; overflow: hidden;
-  }
-  .hero-img {
-    position: absolute; inset: 0;
-    background-image: url('assets/img/hero-bg.jpg');
-    background-size: cover; background-position: center 35%;
-  }
-  .hero-img::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(20,20,16,0.55) 0%,
-      rgba(20,20,16,0.3) 40%,
-      rgba(20,20,16,0.85) 80%,
-      rgba(20,20,16,0.97) 100%
-    );
-  }
-  .hero-content { position: relative; z-index: 2; }
-  .hero-eyebrow {
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--fire); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
-  }
-  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--fire); }
-  .hero h1 {
-    font-family: var(--serif); font-size: clamp(3rem, 8vw, 7.5rem);
-    font-weight: 900; line-height: 0.92; letter-spacing: -0.02em; max-width: 900px; margin-bottom: 2rem;
-  }
-  .hero h1 em { font-style: italic; color: var(--herb-light); }
-  .hero-sub { font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(245,240,232,0.75); max-width: 540px; margin-bottom: 2.5rem; line-height: 1.7; font-weight: 300; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-  .hero-stats {
-    position: absolute; top: 50%; right: 3rem; transform: translateY(-50%); z-index: 2;
-    display: flex; flex-direction: column; gap: 2rem;
-  }
-  .hero-stat { text-align: right; border-right: 2px solid var(--fire); padding-right: 1.25rem; }
-  .hero-stat-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: #fff; line-height: 1; }
-  .hero-stat-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 0.25rem; }
-  .hero-scroll { position: absolute; bottom: 2rem; right: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.35); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; z-index: 2; }
-  .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.35)); animation: scrollPulse 2s ease-in-out infinite; }
-  @keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(0.8);}50%{opacity:1;transform:scaleY(1);} }
-
-  /* BUTTONS */
-  .btn-primary { display: inline-block; background: var(--fire); color: #fff; font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 2rem; border-radius: var(--r); border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
-  .btn-primary:hover { background: var(--fire-dim); transform: translateY(-1px); }
-  .btn-outline { display: inline-block; background: transparent; color: var(--cream); font-family: var(--sans); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 2rem; border-radius: var(--r); border: 1px solid rgba(255,255,255,0.25); transition: border-color 0.2s, background 0.2s; }
-  .btn-outline:hover { border-color: var(--cream); background: rgba(255,255,255,0.05); }
-
-  /* SHARED */
-  section { position: relative; }
-  .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-  .section-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fire); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(232,83,26,0.25); max-width: 80px; }
-  .section-h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; color: var(--cream); }
-
-  /* MARQUEE */
-  .marquee-section { padding: 1.75rem 0; background: var(--char2); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); overflow: hidden; }
-  .marquee-track { display: flex; gap: 3rem; animation: marquee 32s linear infinite; width: max-content; }
-  @keyframes marquee { from{transform:translateX(0);}to{transform:translateX(-50%);} }
-  .marquee-item { display: flex; align-items: center; gap: 1rem; white-space: nowrap; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
-  .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--fire); flex-shrink: 0; }
-
-  /* SERVICES */
-  #services { padding: 7rem 0; background: var(--char); }
-  .services-head { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 4rem; }
-  .services-intro { font-size: 1rem; color: var(--stone-light); line-height: 1.8; font-weight: 300; max-width: 420px; margin-left: auto; }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .service-card {
-    background: var(--char2); padding: 0; position: relative; overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.3s;
-  }
-  .service-card:hover { border-color: rgba(255,255,255,0.1); }
-  .service-card-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
-  .service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
-  .service-card:hover .service-card-img img { transform: scale(1.05); }
-  .service-card-body { padding: 1.75rem 2rem 2rem; position: relative; }
-  .service-card-body::before { content: ''; position: absolute; top: 0; left: 2rem; right: 2rem; height: 1px; background: rgba(255,255,255,0.06); }
-  .service-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--cream); margin-bottom: 0.6rem; line-height: 1.25; }
-  .service-desc { font-size: 0.855rem; color: var(--stone-light); line-height: 1.75; font-weight: 300; }
-  .service-tag { display: inline-block; margin-top: 1.25rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--herb-light); border: 1px solid rgba(200,217,184,0.2); padding: 0.3rem 0.75rem; border-radius: 2px; }
-  /* Text-only cards for ghost/warehouse/catering */
-  .service-card.text-only .service-card-body { padding: 2.5rem 2rem; }
-  .service-card.text-only .service-icon { font-size: 1.75rem; margin-bottom: 1.25rem; display: block; }
-
-  /* INCUBATOR */
-  #incubator { overflow: hidden; }
-  .incubator-img-wrap { position: relative; height: 560px; overflow: hidden; }
-  .incubator-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
-  .incubator-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(61,107,53,0.92) 0%, rgba(61,107,53,0.75) 50%, rgba(61,107,53,0.4) 100%); }
-  .incubator-overlay { position: absolute; inset: 0; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; max-width: 1280px; margin: 0 auto; padding: 5rem 2rem; align-items: center; gap: 4rem; }
-  .incubator-left {}
-  .incubator-steps { display: flex; flex-direction: column; gap: 1.75rem; margin-top: 2.5rem; }
-  .incubator-step { display: flex; gap: 1.25rem; align-items: flex-start; }
-  .step-num { font-family: var(--serif); font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.4); min-width: 2rem; padding-top: 0.2rem; }
-  .step-content h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
-  .step-content p { font-size: 0.84rem; color: rgba(255,255,255,0.65); line-height: 1.7; font-weight: 300; }
-  .incubator-right { }
-  .incubator-right .section-label { color: rgba(255,255,255,0.5); }
-  .incubator-right .section-label::after { background: rgba(255,255,255,0.15); }
-  .incubator-right .section-h2 { color: #fff; }
-  .incubator-right p { font-size: 1rem; color: rgba(255,255,255,0.72); margin-top: 1.25rem; line-height: 1.8; font-weight: 300; }
-  .incubator-right .btn-primary { margin-top: 2rem; background: #fff; color: var(--herb); }
-  .incubator-right .btn-primary:hover { background: var(--cream2); }
-
-  /* SAUCES */
-  #sauces { padding: 7rem 0; background: var(--char); }
-  .sauces-head { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: 3.5rem; }
-  .sauces-desc { font-size: 1rem; color: var(--stone-light); line-height: 1.8; font-weight: 300; max-width: 420px; margin-left: auto; }
-  .sauces-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; background: rgba(255,255,255,0.04); }
-  .sauce-card { position: relative; overflow: hidden; aspect-ratio: 3/4; background: var(--char2); cursor: default; transition: transform 0.35s; }
-  .sauce-card:hover { transform: scale(1.02); z-index: 2; }
-  .sauce-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  .sauce-card:hover img { transform: scale(1.08); }
-  .sauce-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(14,14,10,0.95) 0%, rgba(14,14,10,0.3) 50%, transparent 100%); }
-  .sauce-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem 1.25rem; z-index: 2; }
-  .sauce-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--cream); margin-bottom: 0.3rem; line-height: 1.2; }
-  .sauce-note { font-size: 0.73rem; color: rgba(245,240,232,0.65); line-height: 1.5; font-weight: 300; }
-  .sauce-dot { position: absolute; top: 1rem; right: 1rem; z-index: 2; width: 8px; height: 8px; border-radius: 50%; }
-  .dot-green { background: #5fcc4a; } .dot-gold { background: #e8c97a; } .dot-red { background: #cc2d2d; } .dot-orange { background: #e87a1a; }
-
-  /* CATERING */
-  #catering { padding: 7rem 0; background: var(--char2); }
-  .catering-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; }
-  .catering-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-  .catering-photo { overflow: hidden; aspect-ratio: 4/3; }
-  .catering-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-  .catering-photo:hover img { transform: scale(1.04); }
-  .catering-photo.tall { grid-row: span 2; aspect-ratio: unset; }
-  .catering-photo.tall img { height: 100%; }
-  .catering-right { padding-top: 0.5rem; }
-  .catering-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-  .catering-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.1rem; border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r); transition: border-color 0.2s, background 0.2s; }
-  .catering-item:hover { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); }
-  .catering-icon { font-size: 1.3rem; min-width: 2rem; line-height: 1; padding-top: 0.1rem; }
-  .catering-item h3 { font-family: var(--serif); font-size: 0.95rem; font-weight: 700; color: var(--cream); margin-bottom: 0.2rem; }
-  .catering-item p { font-size: 0.8rem; color: var(--stone-light); line-height: 1.6; font-weight: 300; }
-  .partner-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.5rem; }
-  .partner-tag { font-size: 0.73rem; font-weight: 500; color: var(--stone-light); border: 1px solid rgba(255,255,255,0.1); padding: 0.3rem 0.8rem; border-radius: 100px; }
-
-  /* INSTAGRAM */
-  #instagram { padding: 7rem 0; background: var(--char); }
-  .ig-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; }
-  .ig-link { font-size: 0.8rem; font-weight: 500; color: var(--stone-light); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; letter-spacing: 0.04em; }
-  .ig-link:hover { color: var(--cream); }
-  .ig-link svg { width: 15px; height: 15px; }
-  .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; background: rgba(255,255,255,0.04); }
-  .ig-cell { overflow: hidden; aspect-ratio: 1; }
-  .ig-cell img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .ig-cell:hover img { transform: scale(1.06); }
-
-  /* BUSINESS CARD ACCENT */
-  .biz-card-strip { background: var(--char2); padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .biz-card-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
-  .biz-card-logo { display: flex; align-items: center; gap: 1.25rem; }
-  .biz-card-logo img { height: 56px; width: auto; }
-  .biz-card-info { }
-  .biz-card-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--cream); }
-  .biz-card-name span { color: var(--fire); }
-  .biz-card-tagline { font-size: 0.8rem; color: var(--stone-light); font-weight: 300; letter-spacing: 0.05em; margin-top: 0.2rem; }
-  .biz-card-details { display: flex; gap: 2.5rem; flex-wrap: wrap; }
-  .biz-card-detail { }
-  .biz-card-detail-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.2rem; }
-  .biz-card-detail-val { font-size: 0.85rem; color: var(--stone-light); font-weight: 300; }
-  .biz-card-detail-val a { color: inherit; text-decoration: none; }
-  .biz-card-detail-val a:hover { color: var(--cream); }
-  .biz-card-cta { flex-shrink: 0; }
-
-  /* CONTACT */
-  #contact { background: var(--char); padding: 7rem 0; }
-  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact-info .section-h2 { margin-bottom: 1.25rem; }
-  .contact-info > p { font-size: 1rem; color: var(--stone-light); line-height: 1.8; font-weight: 300; margin-bottom: 2.5rem; }
-  .contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
-  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; }
-  .contact-detail-icon { font-size: 1.1rem; min-width: 1.75rem; color: var(--fire); }
-  .contact-detail-text { font-size: 0.875rem; color: var(--stone-light); font-weight: 300; line-height: 1.6; }
-  .contact-detail-text strong { display: block; color: var(--cream); font-weight: 500; font-size: 0.9rem; margin-bottom: 0.15rem; }
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-group label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone-light); }
-  .form-group input, .form-group select, .form-group textarea { font-family: var(--sans); font-size: 0.9rem; font-weight: 300; color: var(--cream); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r); padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s, background 0.2s; width: 100%; }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--fire); background: rgba(255,255,255,0.06); }
-  .form-group select option { background: #1a1a14; color: var(--cream); }
-  .form-group textarea { resize: vertical; min-height: 110px; }
-
-  /* FOOTER */
-  footer { background: var(--char2); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
-  .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-  .footer-top { display: grid; grid-template-columns: 1.5fr repeat(3,1fr); gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .footer-logo { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
-  .footer-logo img { height: 40px; width: auto; }
-  .footer-logo-text { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--cream); }
-  .footer-logo-text span { color: var(--fire); }
-  .footer-tagline { font-size: 0.84rem; color: var(--stone-light); line-height: 1.7; font-weight: 300; max-width: 260px; margin-bottom: 1.5rem; }
-  .footer-social { display: flex; gap: 0.75rem; }
-  .footer-social a { width: 36px; height: 36px; border-radius: var(--r); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--stone-light); text-decoration: none; transition: border-color 0.2s, color 0.2s; }
-  .footer-social a:hover { border-color: var(--cream); color: var(--cream); }
-  .footer-col h4 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone-light); margin-bottom: 1.25rem; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-  .footer-col a { font-size: 0.84rem; color: var(--stone-light); text-decoration: none; font-weight: 300; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--cream); }
-  .footer-bottom { padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-  .footer-copy { font-size: 0.75rem; color: var(--stone); font-weight: 300; }
-  .footer-bottom-links { display: flex; gap: 1.5rem; list-style: none; }
-  .footer-bottom-links a { font-size: 0.75rem; color: var(--stone); text-decoration: none; font-weight: 300; transition: color 0.2s; }
-  .footer-bottom-links a:hover { color: var(--stone-light); }
-
-  /* MOBILE */
-  @media (max-width: 1024px) {
-    .hero-stats { display: none; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .incubator-overlay { grid-template-columns: 1fr; }
-    .incubator-right { display: none; }
-    .incubator-img-wrap { height: 700px; }
-  }
-  @media (max-width: 900px) {
-    .services-head { grid-template-columns: 1fr; gap: 1.5rem; }
-    .services-intro { margin-left: 0; max-width: 100%; }
-    .sauces-head { grid-template-columns: 1fr; gap: 1.5rem; }
-    .sauces-desc { margin-left: 0; max-width: 100%; }
-    .sauces-grid { grid-template-columns: repeat(2,1fr); }
-    .catering-split { grid-template-columns: 1fr; gap: 3rem; }
-    .contact-split { grid-template-columns: 1fr; gap: 3rem; }
-    .ig-grid { grid-template-columns: repeat(4,1fr); }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .biz-card-inner { flex-direction: column; align-items: flex-start; }
-  }
-  @media (max-width: 640px) {
-    nav { padding: 0 1.25rem; }
-    .nav-links { display: none; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(20,20,16,0.98); padding: 1.5rem; gap: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.08); z-index: 99; }
-    .nav-hamburger { display: flex; }
-    .hero { padding: 0 1.25rem 4rem; }
-    .hero h1 { font-size: 3rem; }
-    .section-inner { padding: 0 1.25rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    .sauces-grid { grid-template-columns: repeat(2,1fr); }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr; }
-    .ig-grid { grid-template-columns: repeat(2,1fr); }
-    #services, #sauces, #catering, #contact, #instagram { padding: 4rem 0; }
-    .incubator-img-wrap { height: 100vh; }
-    .incubator-overlay { padding: 5rem 1.25rem; grid-template-columns: 1fr; }
-    .catering-photos { grid-template-columns: 1fr; }
-    .catering-photo.tall { grid-row: auto; }
-    .footer-inner { padding: 0 1.25rem; }
-    .biz-card-details { flex-direction: column; gap: 1rem; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track { animation: none; }
-    .scroll-line { animation: none; }
-    * { transition-duration: 0.01ms !important; }
-  }
+  .nav-hamburger { display: flex; }
+  .hero { padding: 0 1.25rem 4rem; }
+  .hero h1 { font-size: 2.9rem; }
+  .section-inner { padding: 0 1.25rem; }
+  #ghost, #catering, #sauces, #partners, #contact { padding: 4rem 0; }
+  #how { padding: 4rem 0; }
+  .how-steps { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .ghost-photos { grid-template-columns: 1fr; }
+  .ghost-photos .ghost-photo:nth-child(2), .ghost-photos .ghost-photo:nth-child(3) { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .catering-hero-text { padding: 2.5rem 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .divider-track { animation: none; }
+  * { transition-duration: 0.01ms !important; }
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <img src="assets/img/logo.png" alt="FTG Kitchen logo">
+    <img src="assets/img/logo.png" alt="FTG Kitchen">
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#incubator">Incubator</a></li>
-    <li><a href="#sauces">Sauces</a></li>
+    <li><a href="#ghost">Ghost Kitchen</a></li>
+    <li><a href="#how">How It Works</a></li>
     <li><a href="#catering">Catering</a></li>
+    <li><a href="#sauces">Sauces</a></li>
     <li><a href="#contact" class="nav-cta">Get Started</a></li>
   </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-img"></div>
+  <div class="hero-photo"></div>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-num">149+</div><div class="hero-stat-label">Dishes crafted</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">House sauces</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Counties served</div></div>
+    <div class="hstat"><div class="hstat-num">8</div><div class="hstat-label">House sauces</div></div>
+    <div class="hstat-line"></div>
+    <div class="hstat"><div class="hstat-num">3</div><div class="hstat-label">Counties served</div></div>
+    <div class="hstat-line"></div>
+    <div class="hstat"><div class="hstat-num">2×</div><div class="hstat-label">Weekly delivery</div></div>
   </div>
   <div class="hero-content">
-    <div class="hero-eyebrow">South Florida's Kitchen Hub</div>
-    <h1>Your food<br>business<br><em>starts here.</em></h1>
-    <p class="hero-sub">Commercial kitchen space, ghost kitchen setup, food truck incubator, and bulk catering — all under one roof. We're the food behind the brands you love.</p>
+    <div class="hero-badge"><span class="hero-badge-dot"></span>Ghost Kitchen & Catering · South Florida</div>
+    <h1>The kitchen<br>behind your<br><em>brand.</em></h1>
+    <p class="hero-sub">Launch a virtual food brand or fuel your business with custom bulk catering — chef-crafted, no overhead, South Florida-wide delivery.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Inquire About Space</a>
-      <a href="#services" class="btn-outline">See What We Offer</a>
+      <a href="#ghost" class="btn-primary">Ghost Kitchen Space</a>
+      <a href="#catering" class="btn-outline">Catering Programs</a>
     </div>
   </div>
-  <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
 </section>
 
-<div class="marquee-section">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="marquee-dot"></span>Shared Kitchen</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Ghost Kitchen</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Food Truck Commissary</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Prep Kitchen</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Bulk Catering</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>House-Made Sauces</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Food Business Incubator</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Warehouse Space</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Café Fulfillment</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Meal Delivery</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Shared Kitchen</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Ghost Kitchen</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Food Truck Commissary</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Prep Kitchen</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Bulk Catering</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>House-Made Sauces</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Food Business Incubator</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Warehouse Space</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Café Fulfillment</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Meal Delivery</span>
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-track">
+    <span class="divider-item"><span class="d"></span>Ghost Kitchen</span>
+    <span class="divider-item"><span class="d"></span>Virtual Brands</span>
+    <span class="divider-item"><span class="d"></span>Bulk Catering</span>
+    <span class="divider-item"><span class="d"></span>Café Programs</span>
+    <span class="divider-item"><span class="d"></span>Gym & Spa Menus</span>
+    <span class="divider-item"><span class="d"></span>Weekly Meal Delivery</span>
+    <span class="divider-item"><span class="d"></span>House-Made Sauces</span>
+    <span class="divider-item"><span class="d"></span>South Florida</span>
+    <span class="divider-item"><span class="d"></span>No Contracts</span>
+    <span class="divider-item"><span class="d"></span>Chef-Crafted</span>
+    <span class="divider-item"><span class="d"></span>Ghost Kitchen</span>
+    <span class="divider-item"><span class="d"></span>Virtual Brands</span>
+    <span class="divider-item"><span class="d"></span>Bulk Catering</span>
+    <span class="divider-item"><span class="d"></span>Café Programs</span>
+    <span class="divider-item"><span class="d"></span>Gym & Spa Menus</span>
+    <span class="divider-item"><span class="d"></span>Weekly Meal Delivery</span>
+    <span class="divider-item"><span class="d"></span>House-Made Sauces</span>
+    <span class="divider-item"><span class="d"></span>South Florida</span>
+    <span class="divider-item"><span class="d"></span>No Contracts</span>
+    <span class="divider-item"><span class="d"></span>Chef-Crafted</span>
   </div>
 </div>
 
-<section id="services">
+<!-- GHOST KITCHEN -->
+<section id="ghost">
   <div class="section-inner">
-    <div class="services-head">
-      <div>
-        <div class="section-label">What We Offer</div>
-        <h2 class="section-h2">A full-service<br>food operation,<br>built for you.</h2>
+    <div class="ghost-intro">
+      <div class="ghost-intro-text">
+        <div class="eyebrow">Ghost Kitchen</div>
+        <h2 class="section-h2">Your brand.<br>Our kitchen.</h2>
+        <p style="margin-top:1.25rem;">Launch or scale a delivery-only food concept without the overhead of a physical restaurant. FTG Kitchen provides the licensed, fully equipped space — you focus on building your brand.</p>
+        <div class="ghost-cta" style="margin-top:2rem;">
+          <a href="#contact" class="btn-primary">Apply for Kitchen Space</a>
+          <span class="ghost-cta-note">DOH compliant · flexible scheduling</span>
+        </div>
       </div>
-      <p class="services-intro">Whether you're launching your first food concept or scaling an existing brand, FTG Kitchen has the space, equipment, and expertise to support every stage of your growth.</p>
+      <div class="ghost-intro-right">
+        <div class="ghost-feature">
+          <span class="ghost-feature-icon">🏭</span>
+          <div>
+            <h3>Licensed & compliant</h3>
+            <p>Fully licensed commercial kitchen compliant with DOH and DBPR. Your operation is covered from day one.</p>
+          </div>
+        </div>
+        <div class="ghost-feature">
+          <span class="ghost-feature-icon">🕐</span>
+          <div>
+            <h3>Flexible access</h3>
+            <p>Hourly, daily, or monthly rates. Scale up or down as your volume demands — no long-term lease required.</p>
+          </div>
+        </div>
+        <div class="ghost-feature">
+          <span class="ghost-feature-icon">🚀</span>
+          <div>
+            <h3>Go live fast</h3>
+            <p>Professional equipment, cold storage, and prep areas ready from the start. Skip the buildout, go straight to cooking.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-card-img"><img src="assets/img/svc-kitchen.jpg" alt="FTG Kitchen shared commercial kitchen space" loading="lazy"></div>
-        <div class="service-card-body">
-          <div class="service-name">Shared Commercial Kitchen</div>
-          <p class="service-desc">Licensed, fully equipped commercial kitchen space available by the hour, day, or month. Everything from ovens and burners to walk-in coolers — ready when you are.</p>
-          <span class="service-tag">Flexible Scheduling</span>
-        </div>
+
+    <div class="ghost-photos">
+      <div class="ghost-photo">
+        <img src="assets/img/ghost-1.jpg" alt="Grilled salmon with zucchini noodles" loading="lazy">
+        <div class="ghost-photo-label">Grilled salmon · zucchini noodles</div>
       </div>
-      <div class="service-card">
-        <div class="service-card-img"><img src="assets/img/svc-prep.jpg" alt="Food prep and meal production at FTG Kitchen" loading="lazy"></div>
-        <div class="service-card-body">
-          <div class="service-name">Prep Kitchen & Ghost Kitchen</div>
-          <p class="service-desc">Dedicated prep space for caterers, meal prep services, bakers, and packaged food brands — plus full ghost kitchen setup to run virtual brands without brick-and-mortar overhead.</p>
-          <span class="service-tag">Virtual Brands Welcome</span>
-        </div>
+      <div class="ghost-photo">
+        <img src="assets/img/ghost-2.jpg" alt="Steak with peppers and chimichurri" loading="lazy">
+        <div class="ghost-photo-label">Steak · chimichurri · roasted peppers</div>
       </div>
-      <div class="service-card">
-        <div class="service-card-img"><img src="assets/img/svc-delivery.jpg" alt="FTG Kitchen fresh meal delivery South Florida" loading="lazy"></div>
-        <div class="service-card-body">
-          <div class="service-name">Meal Delivery Program</div>
-          <p class="service-desc">Fresh meals delivered twice a week across South Florida. Chef-crafted, protein-packed, no contracts. Order once or subscribe — we make it easy.</p>
-          <span class="service-tag">No Contracts</span>
-        </div>
-      </div>
-      <div class="service-card text-only">
-        <div class="service-card-body">
-          <span class="service-icon">🚚</span>
-          <div class="service-name">Food Truck Commissary</div>
-          <p class="service-desc">A licensed base of operations for food trucks and mobile vendors. Prep, store, clean, and restock in a fully compliant commissary before you hit the streets.</p>
-          <span class="service-tag">DOH Compliant</span>
-        </div>
-      </div>
-      <div class="service-card text-only">
-        <div class="service-card-body">
-          <span class="service-icon">📦</span>
-          <div class="service-name">Warehouse & Storage</div>
-          <p class="service-desc">Dry, refrigerated, and freezer storage for growing food businesses. Keep your operation running with flexible storage solutions across South Florida.</p>
-          <span class="service-tag">Climate Controlled</span>
-        </div>
-      </div>
-      <div class="service-card text-only">
-        <div class="service-card-body">
-          <span class="service-icon">🌿</span>
-          <div class="service-name">Café, Spa & Gym Fulfillment</div>
-          <p class="service-desc">We're the kitchen behind the counter. Custom bulk menus for cafés, health stores, spas, and gyms — delivered fresh, on your brand, on schedule.</p>
-          <span class="service-tag">Bulk Menu Programs</span>
-        </div>
+      <div class="ghost-photo">
+        <img src="assets/img/ghost-3.jpg" alt="BBQ pulled pork bowl" loading="lazy">
+        <div class="ghost-photo-label">BBQ pulled pork · roasted sweet potato</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="incubator">
-  <div class="incubator-img-wrap">
-    <img src="assets/img/incubator-bg.jpg" alt="FTG Kitchen food business incubator South Florida" loading="lazy">
-  </div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(30,50,25,0.93) 0%, rgba(30,50,25,0.78) 50%, rgba(30,50,25,0.45) 100%);"></div>
-  <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;">
-    <div style="max-width:1280px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;width:100%;align-items:center;">
-      <div>
-        <div class="section-label" style="color:rgba(255,255,255,0.5);">The FTG Path</div>
-        <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#fff;">How we help you<br>grow your food business.</h2>
-        <div class="incubator-steps">
-          <div class="incubator-step">
-            <div class="step-num">01</div>
-            <div class="step-content">
-              <h3>Get licensed & compliant</h3>
-              <p>We walk you through FDA and DBPR requirements. Our facility is fully compliant — your operation is covered from day one.</p>
-            </div>
-          </div>
-          <div class="incubator-step">
-            <div class="step-num">02</div>
-            <div class="step-content">
-              <h3>Build your production workflow</h3>
-              <p>Use professional equipment and shared space to develop your menu, test recipes, and build a repeatable production process without heavy overhead.</p>
-            </div>
-          </div>
-          <div class="incubator-step">
-            <div class="step-num">03</div>
-            <div class="step-content">
-              <h3>Launch and find your first customers</h3>
-              <p>Go live on delivery platforms, at markets, or through catering. We help you establish a foothold in South Florida's competitive food market.</p>
-            </div>
-          </div>
-          <div class="incubator-step">
-            <div class="step-num">04</div>
-            <div class="step-content">
-              <h3>Scale with confidence</h3>
-              <p>Add hours, storage, and staff without changing facilities. Grow into your own space when you're truly ready.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section-label" style="color:rgba(255,255,255,0.45);">Food Business Incubator</div>
-        <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:#fff;">We've helped dozens of food entrepreneurs turn ideas into income.</h2>
-        <p style="font-size:1rem;color:rgba(255,255,255,0.7);margin-top:1.25rem;line-height:1.8;font-weight:300;">Most food businesses fail before finding product-market fit — not because the food isn't good, but because overhead crushes them first. FTG Kitchen gives emerging brands the professional infrastructure of an established restaurant without the risk.</p>
-        <p style="font-size:1rem;color:rgba(255,255,255,0.7);margin-top:1rem;line-height:1.8;font-weight:300;">Bakers, caterers, meal prep services, food truckers, packaged food brands — if your concept involves a kitchen, we're your foundation.</p>
-        <a href="#contact" class="btn-primary" style="margin-top:2rem;display:inline-block;background:#fff;color:var(--herb);">Apply for Kitchen Access</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="sauces">
+<!-- HOW IT WORKS -->
+<section id="how">
   <div class="section-inner">
-    <div class="sauces-head">
-      <div>
-        <div class="section-label">House-Made Sauces</div>
-        <h2 class="section-h2">Made from scratch.<br>No shortcuts.<br>No fillers.</h2>
-      </div>
-      <p class="sauces-desc">Our sauces are the backbone of everything we make — and available for bulk order. Fresh, clean ingredients, no artificial additives. Perfect for drizzling, dipping, marinating, or building your own menu around.</p>
+    <div class="how-head">
+      <div class="eyebrow" style="justify-content:center;">How It Works</div>
+      <h2 class="section-h2" style="font-size:clamp(1.8rem,3.5vw,2.8rem);text-align:center;">From idea to income<br>in four steps.</h2>
     </div>
-    <div class="sauces-grid">
-      <div class="sauce-card">
-        <img src="assets/img/sauce-01.jpg" alt="FTG cilantro sauce" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-green"></div>
-        <div class="sauce-content"><div class="sauce-name">Cilantro Sauce</div><div class="sauce-note">Herb-packed, zesty & bright. Garlic, citrus, fresh cilantro — our signature.</div></div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-n">01</div>
+        <h3>Apply & get approved</h3>
+        <p>Tell us about your concept. We'll review it and confirm your fit for our shared kitchen program within 24 hours.</p>
       </div>
-      <div class="sauce-card">
-        <img src="assets/img/sauce-02.jpg" alt="FTG house caesar dressing" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-gold"></div>
-        <div class="sauce-content"><div class="sauce-name">House Caesar</div><div class="sauce-note">Rich, tangy, scratch-made. Parmesan, garlic, lemon, anchovy — no shortcuts.</div></div>
+      <div class="how-step">
+        <div class="step-n">02</div>
+        <h3>Set up your workflow</h3>
+        <p>Get oriented on equipment, storage, and scheduling. We'll help you dial in a production routine that scales.</p>
       </div>
-      <div class="sauce-card">
-        <img src="assets/img/sauce-03.jpg" alt="FTG ancho BBQ sauce" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-red"></div>
-        <div class="sauce-content"><div class="sauce-name">Ancho BBQ</div><div class="sauce-note">Roasted tomatoes, ancho chiles. Smoky heat with a touch of sweet.</div></div>
+      <div class="how-step">
+        <div class="step-n">03</div>
+        <h3>Launch on your platform</h3>
+        <p>Go live on DoorDash, Uber Eats, or your own ordering channel. We help you get ready for first orders.</p>
       </div>
-      <div class="sauce-card">
-        <img src="assets/img/sauce-04.jpg" alt="FTG classic pesto" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-green"></div>
-        <div class="sauce-content"><div class="sauce-name">Classic Pesto</div><div class="sauce-note">Fresh basil, pine nuts, parmesan. Vibrant green, made to order.</div></div>
+      <div class="how-step">
+        <div class="step-n">04</div>
+        <h3>Grow without limits</h3>
+        <p>Add hours and storage as demand rises. When you're ready for your own space, you'll know — and you'll be ready.</p>
       </div>
-      <div class="sauce-card">
-        <img src="assets/img/sauce-05.jpg" alt="FTG chimichurri sauce" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-green"></div>
-        <div class="sauce-content"><div class="sauce-name">Chimichurri</div><div class="sauce-note">Parsley, garlic, red wine vinegar, olive oil. Argentinian-style herb sauce.</div></div>
-      </div>
-      <div class="sauce-card">
-        <img src="assets/img/sauce-06.jpg" alt="FTG house glazes" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-orange"></div>
-        <div class="sauce-content"><div class="sauce-name">House Glazes</div><div class="sauce-note">Teriyaki, honey sriracha, and seasonal options. Custom glazes available.</div></div>
-      </div>
-      <div class="sauce-card">
-        <img src="assets/img/sauce-07.jpg" alt="FTG marinara sauce" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-red"></div>
-        <div class="sauce-content"><div class="sauce-name">Marinara</div><div class="sauce-note">Slow-cooked San Marzano tomatoes, basil, and garlic. Classic and clean.</div></div>
-      </div>
-      <div class="sauce-card">
-        <img src="assets/img/sauce-08.jpg" alt="FTG lemon caper cream sauce" loading="lazy">
-        <div class="sauce-overlay"></div>
-        <div class="sauce-dot dot-gold"></div>
-        <div class="sauce-content"><div class="sauce-name">Lemon Caper Cream</div><div class="sauce-note">Bright, buttery, balanced. Perfect with fish, chicken, and pasta.</div></div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:3rem;">
-      <a href="#contact" class="btn-outline">Inquire About Bulk Sauce Orders</a>
     </div>
   </div>
 </section>
 
+<!-- CATERING -->
 <section id="catering">
   <div class="section-inner">
-    <div class="catering-split">
-      <div class="catering-photos">
-        <div class="catering-photo tall">
-          <img src="assets/img/catering-1.jpg" alt="FTG Kitchen catering and bulk food preparation" loading="lazy">
+    <div class="eyebrow">Catering & Fulfillment</div>
+
+    <div class="catering-hero">
+      <div class="catering-hero-img">
+        <img src="assets/img/cater-1.jpg" alt="FTG Kitchen catering — chicken bowl with black beans" loading="lazy">
+      </div>
+      <div class="catering-hero-text">
+        <h2 class="section-h2">Bulk menus built around your customers.</h2>
+        <p>You don't need a kitchen team to offer fresh, chef-crafted food. FTG Kitchen handles sourcing, prep, production, and delivery — on your brand and on schedule.</p>
+        <p style="margin-top:0.75rem;">From cafés and corporate accounts to gyms, spas, and health stores — we build custom menus around your clientele and deliver fresh across Miami, Broward, and Palm Beach.</p>
+        <div class="catering-segments">
+          <div class="segment">
+            <span class="segment-icon">☕</span>
+            <div>
+              <h4>Cafés & health stores</h4>
+              <p>Daily fresh menu programs for countertop retail.</p>
+            </div>
+          </div>
+          <div class="segment">
+            <span class="segment-icon">💪</span>
+            <div>
+              <h4>Gyms, spas & studios</h4>
+              <p>Protein-focused, clean-label options for wellness clients.</p>
+            </div>
+          </div>
+          <div class="segment">
+            <span class="segment-icon">🏢</span>
+            <div>
+              <h4>Corporate accounts</h4>
+              <p>Recurring weekly orders for offices and teams.</p>
+            </div>
+          </div>
+          <div class="segment">
+            <span class="segment-icon">🎉</span>
+            <div>
+              <h4>Events & private dining</h4>
+              <p>Custom menus for gatherings of any size.</p>
+            </div>
+          </div>
         </div>
-        <div class="catering-photo">
-          <img src="assets/img/catering-2.jpg" alt="Fresh catered meals from FTG Kitchen" loading="lazy">
-        </div>
-        <div class="catering-photo">
-          <img src="assets/img/food17.jpg" alt="FTG Kitchen meal delivery South Florida" loading="lazy">
+        <div class="catering-cta-row">
+          <a href="#contact" class="btn-lime">Request a Quote</a>
+          <a href="https://www.orderftgkitchen.com" target="_blank" rel="noopener" class="btn-outline">Order Meals Online</a>
         </div>
       </div>
-      <div class="catering-right">
-        <div class="section-label">Catering & Fulfillment</div>
-        <h2 class="section-h2">We're the food<br>behind the brand.</h2>
-        <ul class="catering-list">
-          <li class="catering-item">
-            <span class="catering-icon">☕</span>
-            <div><h3>Café & Health Store Menus</h3><p>Custom bulk menus for cafés, juice bars, and health food stores. Your brand, our kitchen, fresh daily.</p></div>
-          </li>
-          <li class="catering-item">
-            <span class="catering-icon">💪</span>
-            <div><h3>Spa, Gym & Wellness Catering</h3><p>Protein-packed, clean-label options designed for fitness-focused clientele. Built around your nutritional requirements.</p></div>
-          </li>
-          <li class="catering-item">
-            <span class="catering-icon">🎉</span>
-            <div><h3>Event & Corporate Catering</h3><p>From intimate private events to large corporate runs, FTG delivers chef-crafted meals with consistent quality.</p></div>
-          </li>
-          <li class="catering-item">
-            <span class="catering-icon">📦</span>
-            <div><h3>Weekly Meal Delivery</h3><p>Chef-crafted, protein-packed meals delivered twice a week across South Florida. No contracts, no hassle.</p></div>
-          </li>
-        </ul>
-        <div class="partner-tags">
-          <span class="partner-tag">Cafés</span>
-          <span class="partner-tag">Health food stores</span>
-          <span class="partner-tag">Spas</span>
-          <span class="partner-tag">Gyms & CrossFit boxes</span>
-          <span class="partner-tag">Yoga studios</span>
-          <span class="partner-tag">Boutique hotels</span>
-          <span class="partner-tag">Wellness retreats</span>
-          <span class="partner-tag">Office spaces</span>
-        </div>
-        <a href="#contact" class="btn-primary" style="margin-top:2rem;display:inline-block;">Request a Catering Quote</a>
+    </div>
+
+    <!-- dish strip — 4 unique photos -->
+    <div class="dish-strip">
+      <div class="dish-cell">
+        <img src="assets/img/strip-1.jpg" alt="Rice and taco bowl" loading="lazy">
+        <div class="dish-cell-overlay"></div>
+      </div>
+      <div class="dish-cell">
+        <img src="assets/img/strip-2.jpg" alt="BBQ pulled pork bowl" loading="lazy">
+        <div class="dish-cell-overlay"></div>
+      </div>
+      <div class="dish-cell">
+        <img src="assets/img/strip-3.jpg" alt="Steak with chimichurri" loading="lazy">
+        <div class="dish-cell-overlay"></div>
+      </div>
+      <div class="dish-cell">
+        <img src="assets/img/strip-4.jpg" alt="Chicken and black bean bowl" loading="lazy">
+        <div class="dish-cell-overlay"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="instagram">
+<!-- SAUCES -->
+<section id="sauces">
   <div class="section-inner">
-    <div class="ig-head">
-      <div>
-        <div class="section-label">Follow Along</div>
-        <h2 class="section-h2" style="font-size:clamp(1.8rem,3vw,2.5rem);">Behind the kitchen<br>@ftgkitchen</h2>
+    <div class="sauces-inner">
+      <div class="sauces-photo">
+        <img src="assets/img/dish-clean.jpg" alt="FTG Kitchen clean plate — sliced meat with mash and green beans" loading="lazy">
       </div>
-      <a href="https://www.instagram.com/ftgkitchen" target="_blank" rel="noopener" class="ig-link">
-        View on Instagram
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-      </a>
+      <div class="sauces-text">
+        <div class="eyebrow">House-Made Sauces</div>
+        <h2 class="section-h2">No shortcuts.<br>No fillers.</h2>
+        <p style="margin-top:1.25rem;">Every sauce we make starts with fresh ingredients and ends on your plate without preservatives or shortcuts. Available for bulk order alongside any catering program.</p>
+        <p>Our sauces are the backbone of everything we cook — and the reason people come back.</p>
+        <div class="sauce-tags">
+          <span class="sauce-tag">Cilantro</span>
+          <span class="sauce-tag">House Caesar</span>
+          <span class="sauce-tag">Ancho BBQ</span>
+          <span class="sauce-tag">Classic Pesto</span>
+          <span class="sauce-tag">Chimichurri</span>
+          <span class="sauce-tag">Glazes</span>
+          <span class="sauce-tag">Marinara</span>
+          <span class="sauce-tag">Lemon Caper Cream</span>
+        </div>
+        <a href="#contact" class="btn-outline">Inquire About Bulk Orders</a>
+      </div>
     </div>
-    <div class="ig-grid">
-      <div class="ig-cell"><img src="assets/img/ig-01.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-      <div class="ig-cell"><img src="assets/img/ig-02.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-      <div class="ig-cell"><img src="assets/img/ig-03.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-      <div class="ig-cell"><img src="assets/img/ig-04.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-      <div class="ig-cell"><img src="assets/img/ig-05.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-      <div class="ig-cell"><img src="assets/img/ig-06.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-      <div class="ig-cell"><img src="assets/img/ig-07.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-      <div class="ig-cell"><img src="assets/img/ig-08.jpg" alt="FTG Kitchen food photo" loading="lazy"></div>
-    </div>
-    <p style="text-align:center;margin-top:1.75rem;font-size:0.8rem;color:var(--stone);font-weight:300;">4,499 followers · 770+ posts — follow <a href="https://www.instagram.com/ftgkitchen" target="_blank" rel="noopener" style="color:var(--stone-light);text-decoration:none;">@ftgkitchen</a> for daily kitchen content</p>
   </div>
 </section>
 
-<div class="biz-card-strip">
-  <div class="biz-card-inner">
-    <div class="biz-card-logo">
-      <img src="assets/img/logo.png" alt="FTG Kitchen">
-      <div class="biz-card-info">
-        <div class="biz-card-name"><span>FTG</span> Kitchen</div>
-        <div class="biz-card-tagline">South Florida's shared kitchen hub</div>
-      </div>
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="section-inner">
+    <div class="partners-head">
+      <div class="eyebrow" style="justify-content:center;">Who We Serve</div>
+      <p>Our catering programs are built for businesses that want quality food without running a kitchen.</p>
     </div>
-    <div class="biz-card-details">
-      <div class="biz-card-detail">
-        <div class="biz-card-detail-label">Instagram</div>
-        <div class="biz-card-detail-val"><a href="https://www.instagram.com/ftgkitchen" target="_blank" rel="noopener">@ftgkitchen</a></div>
-      </div>
-      <div class="biz-card-detail">
-        <div class="biz-card-detail-label">Order meals</div>
-        <div class="biz-card-detail-val"><a href="https://www.orderftgkitchen.com" target="_blank" rel="noopener">orderftgkitchen.com</a></div>
-      </div>
-      <div class="biz-card-detail">
-        <div class="biz-card-detail-label">Service area</div>
-        <div class="biz-card-detail-val">Miami · Broward · Palm Beach</div>
-      </div>
-    </div>
-    <div class="biz-card-cta">
-      <a href="#contact" class="btn-primary">Get in Touch</a>
+    <div class="partner-grid">
+      <span class="partner-pill">Cafés</span>
+      <span class="partner-pill">Juice bars</span>
+      <span class="partner-pill">Health food stores</span>
+      <span class="partner-pill">Gyms & CrossFit boxes</span>
+      <span class="partner-pill">Yoga studios</span>
+      <span class="partner-pill">Spas & wellness centers</span>
+      <span class="partner-pill">Boutique hotels</span>
+      <span class="partner-pill">Corporate offices</span>
+      <span class="partner-pill">Event venues</span>
+      <span class="partner-pill">Private dining</span>
     </div>
   </div>
-</div>
+</section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="contact-split">
-      <div class="contact-info">
-        <div class="section-label">Get in Touch</div>
-        <h2 class="section-h2">Ready to grow<br>your food business?</h2>
-        <p>Whether you're looking for kitchen space, a catering partner, or bulk sauce orders — let's talk. Fill out the form and we'll get back to you within 24 hours.</p>
-        <div class="contact-details">
-          <div class="contact-detail">
-            <span class="contact-detail-icon">📍</span>
-            <div class="contact-detail-text"><strong>South Florida</strong>Serving Miami-Dade, Broward & Palm Beach</div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="eyebrow">Get in Touch</div>
+        <h2 class="section-h2">Let's build something together.</h2>
+        <p>Whether you're launching a ghost kitchen, booking a catering program, or just want to know more — fill out the form and we'll get back to you within 24 hours.</p>
+        <div class="contact-card">
+          <span class="contact-card-icon">📍</span>
+          <div class="contact-card-body">
+            <strong>Service Area</strong>
+            <span>Miami-Dade · Broward · Palm Beach</span>
           </div>
-          <div class="contact-detail">
-            <span class="contact-detail-icon">📸</span>
-            <div class="contact-detail-text"><strong>Instagram</strong><a href="https://www.instagram.com/ftgkitchen" target="_blank" rel="noopener" style="color:var(--stone-light);text-decoration:none;">@ftgkitchen</a></div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card-icon">📸</span>
+          <div class="contact-card-body">
+            <strong>Instagram</strong>
+            <span><a href="https://www.instagram.com/ftgkitchen" target="_blank" rel="noopener">@ftgkitchen</a></span>
           </div>
-          <div class="contact-detail">
-            <span class="contact-detail-icon">🛒</span>
-            <div class="contact-detail-text"><strong>Order meals online</strong><a href="https://www.orderftgkitchen.com" target="_blank" rel="noopener" style="color:var(--stone-light);text-decoration:none;">orderftgkitchen.com</a></div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-card-icon">🛒</span>
+          <div class="contact-card-body">
+            <strong>Order meals</strong>
+            <span><a href="https://www.orderftgkitchen.com" target="_blank" rel="noopener">orderftgkitchen.com</a></span>
           </div>
         </div>
       </div>
-      <div class="contact-form" id="contactForm">
+      <div class="form" id="contactForm">
         <div class="form-row">
           <div class="form-group"><label for="fname">First name</label><input type="text" id="fname" placeholder="Maria"></div>
           <div class="form-group"><label for="lname">Last name</label><input type="text" id="lname" placeholder="Gonzalez"></div>
         </div>
-        <div class="form-group"><label for="email">Email address</label><input type="email" id="email" placeholder="maria@yourbrand.com"></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="maria@yourbrand.com"></div>
         <div class="form-group">
           <label for="interest">I'm interested in</label>
           <select id="interest">
             <option value="">Select one...</option>
-            <option>Shared kitchen rental</option>
-            <option>Ghost kitchen setup</option>
-            <option>Food truck commissary</option>
-            <option>Prep kitchen space</option>
-            <option>Catering & fulfillment</option>
+            <option>Ghost kitchen space</option>
+            <option>Catering program — café or store</option>
+            <option>Catering program — gym or spa</option>
+            <option>Corporate or event catering</option>
             <option>Bulk sauce orders</option>
-            <option>Café / gym / spa menu program</option>
             <option>Meal delivery subscription</option>
             <option>Something else</option>
           </select>
         </div>
-        <div class="form-group"><label for="message">Tell us about your food business</label><textarea id="message" placeholder="What are you building? Where are you in the process? How can FTG Kitchen help?"></textarea></div>
-        <button class="btn-primary" onclick="handleSubmit()" style="width:100%;text-align:center;">Send Inquiry</button>
-        <p style="font-size:0.75rem;color:var(--stone);font-weight:300;text-align:center;margin-top:0.5rem;">We respond within 24 hours. No spam, ever.</p>
+        <div class="form-group"><label for="msg">Tell us about your concept</label><textarea id="msg" placeholder="What are you building? Where are you in the process?"></textarea></div>
+        <button class="btn-primary" onclick="handleSubmit()" style="width:100%;text-align:center;padding:1rem;">Send Inquiry</button>
+        <p style="font-size:0.73rem;color:var(--fog);text-align:center;">We respond within 24 hours. No spam, ever.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">
-          <img src="assets/img/logo.png" alt="FTG Kitchen">
-          <div class="footer-logo-text"><span>FTG</span> Kitchen</div>
-        </div>
-        <p class="footer-tagline">South Florida's shared commercial kitchen, ghost kitchen incubator, and house-made sauce operation.</p>
+  <div class="section-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/img/logo.png" alt="FTG Kitchen"></div>
+        <p>Ghost kitchen space and custom catering programs across South Florida. Chef-crafted, delivered fresh.</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/ftgkitchen" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
         </div>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4>Kitchen</h4>
         <ul>
-          <li><a href="#services">Shared Kitchen</a></li>
-          <li><a href="#services">Ghost Kitchen</a></li>
-          <li><a href="#services">Food Truck Commissary</a></li>
-          <li><a href="#services">Prep Kitchen</a></li>
-          <li><a href="#services">Warehouse & Storage</a></li>
+          <li><a href="#ghost">Ghost Kitchen</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#contact">Apply for Space</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Products</h4>
+        <h4>Catering</h4>
         <ul>
+          <li><a href="#catering">Café Programs</a></li>
+          <li><a href="#catering">Gym & Spa</a></li>
+          <li><a href="#catering">Corporate</a></li>
           <li><a href="#sauces">House Sauces</a></li>
-          <li><a href="#catering">Bulk Catering</a></li>
-          <li><a href="#catering">Meal Delivery</a></li>
-          <li><a href="#catering">Café Fulfillment</a></li>
-          <li><a href="#catering">Gym & Spa Programs</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4>Links</h4>
         <ul>
-          <li><a href="#incubator">Food Incubator</a></li>
           <li><a href="https://www.instagram.com/ftgkitchen" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://www.orderftgkitchen.com" target="_blank" rel="noopener">Order Meals</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -757,34 +807,34 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 FTG Kitchen. All rights reserved. South Florida.</p>
-      <ul class="footer-bottom-links">
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms</a></li>
-      </ul>
+      <p class="footer-copy">© 2025 FTG Kitchen · South Florida</p>
     </div>
   </div>
 </footer>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FoodEstablishment","name":"FTG Kitchen","description":"South Florida's shared commercial kitchen, ghost kitchen incubator, food truck commissary, bulk catering, and house-made sauces.","url":"https://www.ftgkitchen.com","sameAs":["https://www.instagram.com/ftgkitchen","https://www.orderftgkitchen.com"],"areaServed":["Miami-Dade County","Broward County","Palm Beach County"],"address":{"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US"},"servesCuisine":["American","Latin","Mediterranean"],"priceRange":"$$"}
+{"@context":"https://schema.org","@type":"FoodEstablishment","name":"FTG Kitchen","description":"Ghost kitchen space and custom bulk catering programs across South Florida.","url":"https://www.ftgkitchen.com","sameAs":["https://www.instagram.com/ftgkitchen","https://www.orderftgkitchen.com"],"areaServed":["Miami-Dade County","Broward County","Palm Beach County"],"address":{"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US"}}
 </script>
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  const ham = document.getElementById('hamburger');
+  const nl = document.getElementById('navLinks');
+  ham.addEventListener('click', () => nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nl.classList.remove('open')));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
       if (id === '#') return;
       const el = document.querySelector(id);
-      if (el) { e.preventDefault(); window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' }); }
+      if (el) { e.preventDefault(); window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 76, behavior: 'smooth' }); }
     });
   });
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.06)';
-  }, { passive: true });
+
   function handleSubmit() {
     const fname = document.getElementById('fname').value.trim();
     const email = document.getElementById('email').value.trim();
