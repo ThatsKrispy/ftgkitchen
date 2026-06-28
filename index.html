@@ -141,7 +141,8 @@ nav.scrolled {
 }
 .hero-dot {
   width: 2px; height: 24px; background: rgba(255,255,255,0.2); border-radius: 2px;
-  transition: height 0.4s, background 0.4s; cursor: pointer;
+  transition: height 0.4s, background 0.4s; cursor: pointer !important;
+  background: none; border: none; padding: 0;
 }
 .hero-dot.active { height: 48px; background: var(--lime); }
 
@@ -608,12 +609,15 @@ footer { background: var(--navy); padding: 4rem 0 2rem; border-top: 1px solid rg
 </head>
 <body>
 
+<!-- Skip navigation link (ADA) -->
+<a href="#main-content" class="skip-nav" style="position:absolute;top:-60px;left:1rem;z-index:99999;background:var(--lime);color:var(--navy);font-weight:700;font-size:0.85rem;padding:0.75rem 1.25rem;border-radius:4px;text-decoration:none;transition:top 0.2s" onFocus="this.style.top='1rem'" onBlur="this.style.top='-60px'">Skip to main content</a>
+
 <!-- Custom cursor -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
 
 <!-- NAV -->
-<nav id="nav">
+<nav id="nav" aria-label="Main navigation">
   <a class="nav-logo" href="#">
     <img src="assets/img/logo.png" alt="FTG Kitchen">
   </a>
@@ -629,18 +633,19 @@ footer { background: var(--navy); padding: 4rem 0 2rem; border-top: 1px solid rg
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-slides">
+<section class="hero" id="home" aria-label="Hero">
+  <div id="main-content"></div>
+  <div class="hero-slides" role="img" aria-label="Rotating food photography showcasing FTG Kitchen dishes">
     <div class="hero-slide hero-slide-1 slide-1 active" id="slide1"></div>
     <div class="hero-slide hero-slide-2 slide-2" id="slide2"></div>
     <div class="hero-slide hero-slide-3 slide-3" id="slide3"></div>
   </div>
   <div class="hero-overlay"></div>
 
-  <div class="hero-counter">
-    <div class="hero-dot active" onclick="goSlide(0)"></div>
-    <div class="hero-dot" onclick="goSlide(1)"></div>
-    <div class="hero-dot" onclick="goSlide(2)"></div>
+  <div class="hero-counter" role="group" aria-label="Slide navigation">
+    <button class="hero-dot active" onclick="goSlide(0)" aria-label="Go to slide 1" aria-pressed="true"></button>
+    <button class="hero-dot" onclick="goSlide(1)" aria-label="Go to slide 2" aria-pressed="false"></button>
+    <button class="hero-dot" onclick="goSlide(2)" aria-label="Go to slide 3" aria-pressed="false"></button>
   </div>
 
   <div class="hero-content">
@@ -969,7 +974,7 @@ footer { background: var(--navy); padding: 4rem 0 2rem; border-top: 1px solid rg
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="section-inner">
     <div class="footer-top">
       <div class="footer-brand">
@@ -1016,6 +1021,7 @@ footer { background: var(--navy); padding: 4rem 0 2rem; border-top: 1px solid rg
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FoodEstablishment","name":"FTG Kitchen","description":"Ghost kitchen space and custom bulk catering programs across South Florida.","url":"https://www.ftgkitchen.com","sameAs":["https://www.instagram.com/ftgkitchen","https://www.orderftgkitchen.com"],"areaServed":["Miami-Dade County","Broward County","Palm Beach County"],"address":{"@type":"PostalAddress","addressRegion":"FL","addressCountry":"US"}}
 </script>
+<script src="ada-widget.js" defer></script>
 <script>
 /* ── Custom cursor ── */
 const cur = document.getElementById('cursor');
@@ -1062,9 +1068,11 @@ const kenMap = ['slide-1','slide-2','slide-3'];
 function goSlide(n) {
   slides[current].classList.remove('active', kenMap[current]);
   dots[current].classList.remove('active');
+  dots[current].setAttribute('aria-pressed','false');
   current = n;
   slides[current].classList.add('active', kenMap[current]);
   dots[current].classList.add('active');
+  dots[current].setAttribute('aria-pressed','true');
   clearInterval(timer);
   timer = setInterval(() => goSlide((current + 1) % slides.length), 6000);
 }
